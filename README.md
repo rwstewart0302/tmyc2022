@@ -1,2 +1,3 @@
 # tmyc2022
-internal coding competition
+
+My repo for The More You Code internal coding competition/challenge at LMI.
