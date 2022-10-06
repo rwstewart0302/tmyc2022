@@ -7,12 +7,12 @@ class Week1Solver(): # week1 solver class for parts 1 and 2
 
     def part_1_solver(self, noun: int, verb: int) -> int:
         '''
-        The Part 1 Solver
-         ---> requires 'noun' and 'verb' values to produce an output
-         ---> forcing returned value to an integer
-         ---> returns the initial value of the number list as our output
+        The Part 1 Solver:
+           replace numbers in position 1 and position 2
+           and return the number in position 0 after performing
+           the operations
         '''
-        nums_copy = self.raw_input.copy() # copying our number list so we don't overwrite it when checking different values
+        nums_copy = self.raw_input.copy() # copying the number list so we don't overwrite it when checking different values
         nums_copy[1] = noun
         nums_copy[2] = verb
         for i in range(0, len(nums_copy), 4): # instruction appear every 4 values
@@ -34,12 +34,11 @@ class Week1Solver(): # week1 solver class for parts 1 and 2
 
     def part_2_solver(self, n_check: int) -> int:
         '''
-        The Part 2 Solver
-         ---> requires an 'n_check' value to produce an output
-         ---> forcing returned value to an integer
-         ---> returns the initial value of the number list as our output
-         ---> uses part 1 solver functionality
-         ---> brute force method...probably a more clever way to do this
+        The Part 2 Solver:
+           replace numbers in position 1 and position 2
+           with numbers between 0-99 and return the these
+           2 numbers if the number in position 0 equals
+           n_check 
         '''
         for noun in range(100): # checking all numbers between 0-99 for the noun
             for verb in range(100): # checking all numbers between 0-99 for the verb
