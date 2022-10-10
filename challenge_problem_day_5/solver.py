@@ -3,9 +3,9 @@
 class Week1Solver(): # week1 solver class for parts 1 and 2
     def __init__(self, file_path: str):
         with open(file_path) as f: # reading in the data
-            self.raw_input = [int(num) for x in f.readlines() for num in x.strip().split(',')] # storing data as list of integers
+            self.raw_input = [num for x in f.readlines() for num in x.strip().split(',')] # storing data as list of strings
 
-    def part_1_solver(self, noun: int, verb: int) -> int:
+    def part_1_solver(self, num_1: int, num_2: int) -> int:
         '''
         The Part 1 Solver:
            replace numbers in position 1 and position 2
@@ -13,17 +13,32 @@ class Week1Solver(): # week1 solver class for parts 1 and 2
            the operations
         '''
         nums_copy = self.raw_input.copy() # copying the number list so we don't overwrite it when checking different values
-        nums_copy[1] = noun
-        nums_copy[2] = verb
-        for i in range(0, len(nums_copy), 4): # instruction appear every 4 values
+        nums_copy[1] = int(num_1)
+        nums_copy[2] = int(num_2)
+
+        i = 0
+        while True:
+            num_0 = int(nums_copy[i])
+            if num_0 == 3:
+                
+                i += 2
+            elif num_0 == 4:
+
+                i += 2
+            else:
+                i += 4
             try: # do things if indices are in the range of nums_copy
-                noun_ind = nums_copy[i + 1]
-                verb_ind = nums_copy[i + 2]
+                num_1_ind = int(nums_copy[i + 1])
+                num_2_ind = int(nums_copy[i + 2])
                 replace_ind = nums_copy[i + 3]
+                num_0_str = str(nums_copy[i])
                 if nums_copy[i] == 1: # instructions if value is 1
                     new_num = nums_copy[noun_ind] + nums_copy[verb_ind]
                     nums_copy[replace_ind] = new_num
                 elif nums_copy[i] == 2: # instructions if value is 2
+                    new_num = nums_copy[noun_ind] * nums_copy[verb_ind]
+                    nums_copy[replace_ind] = new_num
+                elif nums_copy[i] == 3: # instructions if value is 2
                     new_num = nums_copy[noun_ind] * nums_copy[verb_ind]
                     nums_copy[replace_ind] = new_num
                 elif nums_copy[i] == 99: # instructions if value is 99
@@ -38,7 +53,7 @@ class Week1Solver(): # week1 solver class for parts 1 and 2
            replace numbers in position 1 and position 2
            with numbers between 0-99 and return the these
            2 numbers if the number in position 0 equals
-           n_check 
+           n_check
         '''
         for noun in range(100): # checking all numbers between 0-99 for the noun
             for verb in range(100): # checking all numbers between 0-99 for the verb
